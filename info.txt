@@ -1,0 +1,12 @@
+lib (wszystko co globalne i zewnetrzne)
+	css (bootstrap)
+	bootstrap.js
+	jquery.js
+	knockout.js
+scripts (biblioteki globalne)
+models
+pages (poszczegolne strony)
+	home
+	itp.
+services
+styles (style globalne)
