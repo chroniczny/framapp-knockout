@@ -1,0 +1,19 @@
+{
+  "name": "knockout",
+  "version": "1.0.0",
+  "description": "a start app based on knockout",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PGS-dev/framapp-knockout.git"
+  },
+  "author": "marcin&\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[C\u001b[C\u001b[DMarcin & Jakub",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PGS-dev/framapp-knockout/issues"
+  },
+  "homepage": "https://github.com/PGS-dev/framapp-knockout#readme"
+}
