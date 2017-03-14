@@ -7,7 +7,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <!-- <link href="https://fonts.googleapis.com/css?family=Roboto:400,100,300" rel="stylesheet" type="text/css"> -->
     <title>FramApp Template</title>
-    <link rel="stylesheet" href="css/main.css">
+    <!--<link rel="stylesheet" href="css/main.css">-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
 </head>
 <body>
@@ -55,7 +55,30 @@
             </div>
         </div>
     </div>
+
+
+    <div id="json-test-response"></div>
+
+    <ul data-bind="foreach: categories">
+        <li>
+            <b data-bind="text: description"></b> <u data-bind="text: title"></u>
+        </li>
+    </ul>
+
 <!-- <script type="text/javascript" src="/script.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.1/knockout-min.js"></script>
+    <script src="../../scripts/viewmodels.js"></script>
+    
+    <script>
+        $(document).ready(function () {
+            //$.getJSON('https://project-5613440220430148247.firebaseio.com/api/v1/categories.json', function(json) {
+            //    $("#json-test-response").html(JSON.stringify(json));
+            //    var categories = $.map(json, function (elem) { return elem; });
+            //    console.log(categories);
+            //});
+        });
+    </script>
 </body>
 </html>
 
