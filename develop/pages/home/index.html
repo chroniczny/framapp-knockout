@@ -56,7 +56,7 @@
         </div>
     </div>
 
-    <ul data-bind="foreach: categoriesList">
+    <ul data-bind="foreach: nav.categoriesList">
         <li>
             <b data-bind="text: description"></b> <u data-bind="text: title"></u>
         </li>
@@ -64,7 +64,19 @@
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/knockout/3.4.1/knockout-min.js"></script>
-    <script data-main="../../scripts/viewmodels" src="../../scripts/require.js"></script>
+    <!--<script data-main="../../scripts/viewmodels" src="../../scripts/require.js"></script>-->
+    <script src="../../scripts/viewmodels.js"></script>
+
+    <script>
+        ko.applyBindings(new MainViewModel());
+
+
+        //requirejs(["../pages/navigation/test.js"], function (myapp) {
+        //    myapp.test();
+        //});
+
+        //myapp.test();
+    </script>
 </body>
 </html>
 
