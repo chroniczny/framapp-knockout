@@ -1,0 +1,2 @@
+var DetailProductViewModel = function () {
+};

@@ -1,6 +1,16 @@
 var browserSync = require('browser-sync').create(),
     gulp = require('gulp'),
-    plugins = require('gulp-load-plugins')(); // automatycznie bedzie zaczytywal pluginy w trakcie ich napotkania
+    autoprefixer = require('gulp-autoprefixer'),
+    concat = require('gulp-concat'),
+    cssmin = require('gulp-cssmin'),
+    jshint = require('gulp-jshint'),
+    uglify = require('gulp-uglify'),
+    watch = require('gulp-watch'),
+    flatten = require('gulp-flatten'),
+    size = require('gulp-size'),
+    useref = require('gulp-useref'),
+    filter =  require('gulp-filter'),
+    clean = require('gulp-clean');
 
 var DIR_DIST = './release';
 var DIR_SOURCE = './develop';
@@ -49,7 +59,7 @@ gulp.task('sass', function () {
     return gulp.src(DIR_SOURCE + '/**/*.scss')
         .pipe(plugins.sass())
         .pipe(plugins.autoprefixer('last 1 version'))
-        .pipe(plugins.csso())
+        .pipe(plugins.cssmin())
         .pipe(gulp.dest(DIR_DIST))
         .pipe(browserSync.stream());
 });
