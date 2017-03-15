@@ -25,13 +25,12 @@ gulp.task('assets', ['clean'], function () {
 
 gulp.task('clean', function () {
     return gulp.src(DIR_DIST)
-        .pipe(plugins.clean());
+        .pipe(plugins.clean());     // usuwa zawartosc katalogu
 });
 
 gulp.task('js', function () {
     return gulp.src([DIR_SOURCE + '/**/*.js', '!**/*.min.js'])
         .pipe(plugins.jshint());
-        //.pipe(plugins.jshint.reporter('jshint-stylish'));
 });
 
 gulp.task('js-watch', ['js'], function (done) {
