@@ -1,6 +1,6 @@
 ﻿var MainViewModel = function () {
 
-    requirejs(["navViewModel"], function (myapp) {
+    requirejs(["../pages/navigation/navigation-viewmodel"], function (myapp) {
 
     });
 
