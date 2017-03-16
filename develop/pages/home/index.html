@@ -8,14 +8,17 @@
     <!-- <link href="//fonts.googleapis.com/css?family=Roboto:400,100,300" rel="stylesheet" type="text/css"> -->
     <title>FramApp Template</title>
     <!--<link rel="stylesheet" href="css/main.css">-->
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd"
+        crossorigin="anonymous">
 </head>
+
 <body>
     <div class="AppContainer container-fluid">
         <div class="row">
             <div class="col-xs">
                 <header class="AppHeader navbar navbar-full navbar-light bg-faded">
-                    <a href="#"><img src="//www.pgs-soft.com/wp-content/themes/pgstemplate/img/header/pgs-logo-dark.png" alt="Logo" class="AppHeader-logoImage" /></a>
+                    <a href="#"><img src="//www.pgs-soft.com/wp-content/themes/pgstemplate/img/header/pgs-logo-dark.png" alt="Logo" class="AppHeader-logoImage"
+                        /></a>
                     <ul class="nav nav-pills pull-xs-right">
                         <li class="nav-item"><a href="#" class="nav-link">Hello Admin!</a></li>
                     </ul>
@@ -58,14 +61,32 @@
 
     <ul data-bind="foreach: nav.categoriesList">
         <li>
-            <b data-bind="text: description"></b> <u data-bind="text: title"></u>
+            <b data-bind="text: description"></b>
+            <u data-bind="text: title"></u>
         </li>
     </ul>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/knockout/3.4.1/knockout-min.js"></script>
     <!--<script data-main="../../scripts/viewmodels" src="../../scripts/require.js"></script>-->
-    <script src="../../scripts/viewmodels.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/3.7.2/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyCsEb9qCqQSkbPz-q2-NECfjJzTmEgWmsY",
+            authDomain: "frammapp-knockout.firebaseapp.com",
+            databaseURL: "https://frammapp-knockout.firebaseio.com",
+            storageBucket: "frammapp-knockout.appspot.com",
+            messagingSenderId: "326471765198"
+        };
+        firebase.initializeApp(config);
+
+    </script>
+
+    <script src="../../pages/viewmodels.js"></script>
+    <script src="../../models/datamodel.js"></script>
+    <script src="../../pages/navigation/navigation-viewmodel.js"></script>
 
     <script>
         ko.applyBindings(new MainViewModel());
@@ -78,5 +99,5 @@
         //myapp.test();
     </script>
 </body>
-</html>
 
+</html>

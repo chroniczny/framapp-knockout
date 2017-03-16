@@ -2,6 +2,7 @@ var DataModel = function (getJSON, map, categoriesJson, categories) {   // used 
     var getProductsCategory = function () {
         getJSON(categoriesJson, function (json) {
             map(json, function (elem) { categories.push(elem); }); // not pure function
+            console.log(categories);
         });
     };
 
