@@ -38,45 +38,11 @@
         <div class="col-md-9 col-lg-10">
             <main class="AppMain">
                 <div class="ProductCards" data-bind="foreach: products.productsList">
-<<<<<<< HEAD
                     <div class="ProductCard" data-bind="visible: $data.promoted == true">
                         <img data-bind="attr:{src: imageUrl}">
                         <p data-bind="text: $data.title"></p>
                     </div>
                 </div>
-=======
-                    <div class="ProductCard" >
-                        <img src="https://placeholdit.imgix.net/~text?txtsize=33&w=200&h=200&txt=Gonkle" data-bind="">
-                        <p data-bind="text: $data.title"></p>
-                    </div>
-                </div>
-
-
-                <!--<div>Wybierz
-                    <select id="promowany">
-                        <option value="true">true</option>
-                        <option value="false">false</option>
-                    </select>
-                </div>-->
-
-                
-                    <!--<div class="ProductCard">
-                        <img src="https://placeholdit.imgix.net/~text?txtsize=33&w=200&h=200&txt=Gonkle" data-bind="">
-                        <p data-bind="">Kyaguru</p>
-                    </div>
-                    <div class="ProductCard">
-                        <img src="https://placeholdit.imgix.net/~text?txtsize=33&w=200&h=200&txt=Gonkle" data-bind="">
-                        <p data-bind="">Kyaguru</p>
-                    </div>
-                    <div class="ProductCard">
-                        <img src="https://placeholdit.imgix.net/~text?txtsize=33&w=200&h=200&txt=Gonkle" data-bind="">
-                        <p data-bind="">Kyaguru</p>
-                    </div>
-                    <div class="ProductCard">
-                        <img src="https://placeholdit.imgix.net/~text?txtsize=33&w=200&h=200&txt=Gonkle" data-bind="">
-                        <p data-bind="">Kyaguru</p>
-                    </div>-->
->>>>>>> PFAP-4_-_SHOP_Home_Page
             </main>
         </div>
     </div>
@@ -93,16 +59,6 @@
 <script>
     var mvm = new MainViewModel();
     ko.applyBindings(mvm);
-
-
-    //test
-    // $('#promowany').on('change', function() {
-    //     var products = [];
-    //     var productsList = ko.observableArray(products);
-    //     var productsJson = 'https://frammapp-knockout.firebaseio.com/.json'; //'https://project-5613440220430148247.firebaseio.com/api/v1/categories.json';
-    //     var dm = new DataModel($.getJSON, $.map);
-    //     dm.getProducts(productsJson, productsList, 'promoted', this.value);
-    // });
 </script>
 </body>
 </html>
