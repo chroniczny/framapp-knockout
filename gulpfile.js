@@ -1,17 +1,17 @@
 var browserSync = require('browser-sync').create(),
     gulp = require('gulp'),
     plugins = require('gulp-load-plugins')(); // automatyczne bedzie zaczytywal pluginy w trakcie ich napotkania
-    // autoprefixer = require('gulp-autoprefixer'),
-    // concat = require('gulp-concat'),
-    // cssmin = require('gulp-cssmin'),
-    // jshint = require('gulp-jshint'),
-    // uglify = require('gulp-uglify'),
-    // watch = require('gulp-watch'),
-    // flatten = require('gulp-flatten'),
-    // size = require('gulp-size'),
-    // useref = require('gulp-useref'),
-    // filter =  require('gulp-filter'),
-    // clean = require('gulp-clean');
+// autoprefixer = require('gulp-autoprefixer'),
+// concat = require('gulp-concat'),
+// cssmin = require('gulp-cssmin'),
+// jshint = require('gulp-jshint'),
+// uglify = require('gulp-uglify'),
+// watch = require('gulp-watch'),
+// flatten = require('gulp-flatten'),
+// size = require('gulp-size'),
+// useref = require('gulp-useref'),
+// filter =  require('gulp-filter'),
+// clean = require('gulp-clean');
 
 var DIR_DIST = './release';
 var DIR_SOURCE = './develop';
@@ -69,10 +69,12 @@ gulp.task('serve', ['html'], function () { // uruchamia browerSync (zwykle start
         open: true,
         port: 8080,
         server: {
-            baseDir: [
-                DIR_SOURCE,
-                DIR_DIST
-            ]
+            baseDir: [  // katalogi, w ktorych serwer szuka zaciaganych plikow (js, css itd.)
+                DIR_SOURCE + '/pages/home/',
+                DIR_DIST,
+                DIR_SOURCE
+            ],
+            index: 'index.html'
         }
     });
 

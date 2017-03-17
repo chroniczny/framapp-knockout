@@ -3,5 +3,6 @@
     var self = this;
 
     self.nav = new NavViewModel();
+    self.products = new ProductsViewModel();
 
 };
