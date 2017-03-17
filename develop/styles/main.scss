@@ -1,9 +1,11 @@
-HTML,
-BODY {
-  height: 100%; }
+html,
+body {
+  height: 100%;
+}
 
-BODY {
-  background-image: linear-gradient(to right bottom, #ED6415 0%, #FF9B30 100%); }
+body {
+  background: #ED6415;
+  }
 
 .AppHeader {
   margin-bottom: 30px; }

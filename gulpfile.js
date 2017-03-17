@@ -61,6 +61,7 @@ gulp.task('sass', function () {
         .pipe(plugins.autoprefixer('last 1 version'))
         .pipe(plugins.cssmin())
         .pipe(gulp.dest(DIR_DIST))
+        .pipe(gulp.dest(DIR_SOURCE))
         .pipe(browserSync.stream());
 });
 

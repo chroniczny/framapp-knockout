@@ -37,28 +37,38 @@
         </div>
         <div class="col-md-9 col-lg-10">
             <main class="AppMain">
-                <div class="ProductCards">
-                    <div class="ProductCard">
+                <div class="ProductCards" data-bind="foreach: products.productsList">
+                    <div class="ProductCard" >
                         <img src="https://placeholdit.imgix.net/~text?txtsize=33&w=200&h=200&txt=Gonkle" data-bind="">
-                        <p data-bind="">Kyaguru</p>
-                    </div>
-                    <div class="ProductCard">
-                        <img src="https://placeholdit.imgix.net/~text?txtsize=33&w=200&h=200&txt=Gonkle" data-bind="">
-                        <p data-bind="">Kyaguru</p>
-                    </div>
-                    <div class="ProductCard">
-                        <img src="https://placeholdit.imgix.net/~text?txtsize=33&w=200&h=200&txt=Gonkle" data-bind="">
-                        <p data-bind="">Kyaguru</p>
-                    </div>
-                    <div class="ProductCard">
-                        <img src="https://placeholdit.imgix.net/~text?txtsize=33&w=200&h=200&txt=Gonkle" data-bind="">
-                        <p data-bind="">Kyaguru</p>
-                    </div>
-                    <div class="ProductCard">
-                        <img src="https://placeholdit.imgix.net/~text?txtsize=33&w=200&h=200&txt=Gonkle" data-bind="">
-                        <p data-bind="">Kyaguru</p>
+                        <p data-bind="text: $data.title"></p>
                     </div>
                 </div>
+
+
+                <!--<div>Wybierz
+                    <select id="promowany">
+                        <option value="true">true</option>
+                        <option value="false">false</option>
+                    </select>
+                </div>-->
+
+                
+                    <!--<div class="ProductCard">
+                        <img src="https://placeholdit.imgix.net/~text?txtsize=33&w=200&h=200&txt=Gonkle" data-bind="">
+                        <p data-bind="">Kyaguru</p>
+                    </div>
+                    <div class="ProductCard">
+                        <img src="https://placeholdit.imgix.net/~text?txtsize=33&w=200&h=200&txt=Gonkle" data-bind="">
+                        <p data-bind="">Kyaguru</p>
+                    </div>
+                    <div class="ProductCard">
+                        <img src="https://placeholdit.imgix.net/~text?txtsize=33&w=200&h=200&txt=Gonkle" data-bind="">
+                        <p data-bind="">Kyaguru</p>
+                    </div>
+                    <div class="ProductCard">
+                        <img src="https://placeholdit.imgix.net/~text?txtsize=33&w=200&h=200&txt=Gonkle" data-bind="">
+                        <p data-bind="">Kyaguru</p>
+                    </div>-->
             </main>
         </div>
     </div>
@@ -73,8 +83,18 @@
 <script src="../../pages/products/products-viewmodel.js"></script>
 
 <script>
-    ko.applyBindings(new MainViewModel());
+    var mvm = new MainViewModel();
+    ko.applyBindings(mvm);
 
+
+    //test
+    // $('#promowany').on('change', function() {
+    //     var products = [];
+    //     var productsList = ko.observableArray(products);
+    //     var productsJson = 'https://frammapp-knockout.firebaseio.com/.json'; //'https://project-5613440220430148247.firebaseio.com/api/v1/categories.json';
+    //     var dm = new DataModel($.getJSON, $.map);
+    //     dm.getProducts(productsJson, productsList, 'promoted', this.value);
+    // });
 </script>
 </body>
 </html>

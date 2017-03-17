@@ -1,21 +1,32 @@
 var DataModel = function (getJSON, map) {   // used dependency injection DataModel($.getJSON, $.map)
 
-    var getCategories = function (jsonFile, ourArray) {
+    var getCategories = function (jsonFile, ourArray, filter, filterVal) {
         getJSON(jsonFile, function (json) {
             var firstJSON = json.categories;
             map(firstJSON, function (elem) {
-                ourArray.push(elem.title);
+                if (typeof filter !== 'undefined') {
+                    if (elem[filter] == filterVal) {
+                        ourArray.push(elem.title);
+                    }
+                } else {
+                    ourArray.push(elem.title);
+                }
             });
 
             console.log(ourArray());
         });
     };
 
-    var getProducts = function (jsonFile, ourArray) {
+    var getProducts = function (jsonFile, ourArray, filter, filterVal) {
         getJSON(jsonFile, function (json) {
             var firstJSON = json.products;
             map(firstJSON, function (elem) {
-                ourArray.push(elem);
+                if (typeof filter !== 'undefined') {
+                    if (elem[filter] == filterVal)
+                        ourArray.push(elem);
+                } else {
+                    ourArray.push(elem);
+                }
             });
 
             console.log(ourArray());
