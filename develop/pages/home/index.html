@@ -37,26 +37,10 @@
         </div>
         <div class="col-md-9 col-lg-10">
             <main class="AppMain">
-                <div class="ProductCards">
-                    <div class="ProductCard">
-                        <img src="https://placeholdit.imgix.net/~text?txtsize=33&w=200&h=200&txt=Gonkle" data-bind="">
-                        <p data-bind="">Kyaguru</p>
-                    </div>
-                    <div class="ProductCard">
-                        <img src="https://placeholdit.imgix.net/~text?txtsize=33&w=200&h=200&txt=Gonkle" data-bind="">
-                        <p data-bind="">Kyaguru</p>
-                    </div>
-                    <div class="ProductCard">
-                        <img src="https://placeholdit.imgix.net/~text?txtsize=33&w=200&h=200&txt=Gonkle" data-bind="">
-                        <p data-bind="">Kyaguru</p>
-                    </div>
-                    <div class="ProductCard">
-                        <img src="https://placeholdit.imgix.net/~text?txtsize=33&w=200&h=200&txt=Gonkle" data-bind="">
-                        <p data-bind="">Kyaguru</p>
-                    </div>
-                    <div class="ProductCard">
-                        <img src="https://placeholdit.imgix.net/~text?txtsize=33&w=200&h=200&txt=Gonkle" data-bind="">
-                        <p data-bind="">Kyaguru</p>
+                <div class="ProductCards" data-bind="foreach: products.productsList">
+                    <div class="ProductCard" data-bind="visible: $data.promoted == true">
+                        <img data-bind="attr:{src: imageUrl}">
+                        <p data-bind="text: $data.title"></p>
                     </div>
                 </div>
             </main>
