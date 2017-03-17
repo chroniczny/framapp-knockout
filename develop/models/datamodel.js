@@ -22,8 +22,9 @@ var DataModel = function (getJSON, map) {   // used dependency injection DataMod
             var firstJSON = json.products;
             map(firstJSON, function (elem) {
                 if (typeof filter !== 'undefined') {
-                    if (elem[filter] == filterVal)
+                    if (elem[filter] == filterVal) {
                         ourArray.push(elem);
+                    }
                 } else {
                     ourArray.push(elem);
                 }
