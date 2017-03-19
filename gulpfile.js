@@ -49,8 +49,9 @@ gulp.task('sass', function () {
     return gulp.src(DIR_SOURCE + '/**/*.scss')
         .pipe(plugins.sass())
         .pipe(plugins.autoprefixer('last 1 version'))
-        .pipe(plugins.csso())
+        .pipe(plugins.cssmin())
         .pipe(gulp.dest(DIR_DIST))
+        .pipe(gulp.dest(DIR_SOURCE))
         .pipe(browserSync.stream());
 });
 
@@ -59,10 +60,12 @@ gulp.task('serve', ['html'], function () { // uruchamia browerSync (zwykle start
         open: true,
         port: 8080,
         server: {
-            baseDir: [
-                DIR_SOURCE,
-                DIR_DIST
-            ]
+            baseDir: [  // katalogi, w ktorych serwer szuka zaciaganych plikow (js, css itd.)
+                DIR_SOURCE + '/pages/home/',
+                DIR_DIST,
+                DIR_SOURCE
+            ],
+            index: 'index.html'
         }
     });
 
