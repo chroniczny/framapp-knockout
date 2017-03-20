@@ -8,14 +8,7 @@ var NavViewModel = function () {
 
     self.ourCategory = ko.observable();
     self.getCategory = function(elem) {
-        alert('category '+elem.toLowerCase() + ' is clicked');
         self.ourCategory(elem.toLowerCase());
-    };
-
-    self.resetCategory = function() {
-        alert('reset category is done');
-        self.ourCategory = ko.observable();
-
     };
 
     dm.getCategories(self.categoriesJson, self.categoriesList);

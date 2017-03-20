@@ -7,34 +7,9 @@ var ProductsViewModel = function () {
 
     dm.getProducts(self.productsJson, self.productsList);
 
-
-
-
     self.chosenProduct = ko.observable();
     self.getProduct = function(elem) {
-        alert('product '+elem.title + ' is clicked');
         self.chosenProduct(elem.title);
     };
 
-
-
-
-
-
-
-
-
-    // self.filter = ko.observable('promoted'); // starting homepage
-    //
-    // self.promotedFilter = function () { // when returning homepage
-    //     alert('filter got promoted');
-    //     self.filter = ko.observable('promoted');
-    // };
-    // self.resetPromoted = function () { // when category is chosen
-    //     alert('clicked reset filter');
-    //     self.filter = ko.observable();
-    // };
-
-
-    // dm.getProducts(self.productsJson, self.productsList, self.filter(), true);
 };
