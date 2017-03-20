@@ -36,7 +36,7 @@ var DataModel = function (getJSON, map) {   // used dependency injection DataMod
 
     var getDetails = function (jsonFile, ourArray, filter, filterVal) {
         getJSON(jsonFile, function (json) {
-            var firstJSON = json.products.title;
+            var firstJSON = json.products.guid;
             map(firstJSON, function (elem) {
                 if (typeof filter !== 'undefined') {
                     if (elem[filter] == filterVal) {
@@ -50,8 +50,6 @@ var DataModel = function (getJSON, map) {   // used dependency injection DataMod
             console.log(ourArray());
         });
     };
-
-
 
     return {
         getCategories: getCategories,

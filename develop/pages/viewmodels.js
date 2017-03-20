@@ -6,8 +6,6 @@
     self.products = new ProductsViewModel();
     self.details = new DetailProductViewModel();
 
-
-
 };
 
 
