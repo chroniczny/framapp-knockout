@@ -1,9 +1,11 @@
-var ProductsViewModel = function () {
+var ProductsViewModel = function (filter) {
     var self = this;
     self.products = [];
     self.productsList = ko.observableArray(self.products);
     self.productsJson = 'https://frammapp-knockout.firebaseio.com/.json'; //'https://project-5613440220430148247.firebaseio.com/api/v1/categories.json';
+
     var dm = new DataModel($.getJSON, $.map);
+<<<<<<< Updated upstream
 
     dm.getProducts(self.productsJson, self.productsList);
 
@@ -13,3 +15,10 @@ var ProductsViewModel = function () {
     };
 
 };
+=======
+    dm.getProducts(self.productsJson, self.productsList, filter, true);
+    //dm.getProducts(self.productsJson, self.productsList, 'promoted', true);
+};
+
+ProductsViewModel.prototype.filter = ko.observable('promoted');
+>>>>>>> Stashed changes

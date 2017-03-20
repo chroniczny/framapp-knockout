@@ -19,8 +19,12 @@
         <div class="col-xs">
             <header class="AppHeader navbar navbar-full navbar-light bg-faded">
                 <a href="#"><img src="//www.pgs-soft.com/wp-content/themes/pgstemplate/img/header/pgs-logo-dark.png"
+<<<<<<< Updated upstream
                                  alt="Logo" class="AppHeader-logoImage" data-bind="click: $root.nav.resetCategory"/>
                     <!--$root.products.promotedFilter -->
+=======
+                                 alt="Logo" class="AppHeader-logoImage" data-bind="click: NavViewModel.prototype.clearFilter" />
+>>>>>>> Stashed changes
                 </a>
                 <ul class="nav nav-pills pull-xs-right">
                     <li class="nav-item"><a href="#" class="nav-link">Hello Admin!</a></li>
@@ -30,6 +34,7 @@
     </div>
     <div class="row">
         <div class="col-md-3 col-lg-2">
+<<<<<<< Updated upstream
             <div class="AppNavigation">
                 <h6 class="list-group-item">Categories</h6>
                 <ul class="list-group" data-bind="foreach: nav.categoriesList">
@@ -38,14 +43,38 @@
                     </li>
                 </ul>
             </div>
+=======
+            <h6 class="list-group-item">Categories</h6>
+            <ul class="list-group" data-bind="foreach: nav.categoriesList">
+                <li class="list-group-item"><a href="" data-bind="text: $data, click: $root.nav.getCategory.bind($data)"></a>
+                </li>
+                <!--<li class="list-group-item"><a href="" data-bind="text: $data, click: $root.getValue.bind($data)"></a></li>-->
+                <!--<li class="list-group-item"><a href="" data-bind="text: $data, click: function (data) { alert(data); }"></a></li>-->
+            </ul>
+
+>>>>>>> Stashed changes
         </div>
         <div class="col-md-9 col-lg-10">
             <main class="AppMain">
                 <div class="ProductCards" data-bind="foreach: products.productsList()">
+<<<<<<< Updated upstream
 
                     <!--VIEW: HOME/promoted-->
                     <div class="ProductCard" data-bind="visible: typeof $root.nav.ourCategory() == 'undefined' && $data.promoted === true,
                                                         click: $root.products.getProduct.bind($data)">
+=======
+
+                    <div class="ProductCard" data-bind="visible: typeof $root.nav.ourCategory() === 'undefined'">
+                        <img data-bind="attr:{src: $data.imageUrl}">
+
+                        <p data-bind="text: $data.title"></p>
+                        <p data-bind="visible: $data.promoted === true"> *promoted</p>
+
+                        <p data-bind="text: $data.category"></p>
+                    </div>
+
+                    <div class="ProductCard" data-bind="visible: typeof $root.nav.ourCategory() !== 'undefined' && $data.category == $root.nav.ourCategory()">
+>>>>>>> Stashed changes
                         <img data-bind="attr:{src: $data.imageUrl}">
                         <p data-bind="text: $data.title"></p>
                         <p data-bind="visible: $data.promoted === true"> *promoted</p>

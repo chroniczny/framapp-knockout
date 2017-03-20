@@ -7,10 +7,25 @@ var NavViewModel = function () {
 
 
     self.ourCategory = ko.observable();
+<<<<<<< Updated upstream
     self.getCategory = function(elem) {
         self.ourCategory(elem.toLowerCase());
     };
 
     dm.getCategories(self.categoriesJson, self.categoriesList);
+=======
+    self.getCategory = function (elem) {
+        //alert('category '+elem.toLowerCase() + ' is clicked');
+        self.ourCategory(elem.toLowerCase());
+    };
 
+};
+
+NavViewModel.prototype.clearFilter = function () {
+    var filter = ProductsViewModel.prototype.filter('s');
+
+    var p = new ProductsViewModel(filter);
+>>>>>>> Stashed changes
+
+    console.log('aaa');
 };
