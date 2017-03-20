@@ -57,7 +57,12 @@ body {
   width: 200px;
   background: #fff;
   display: inline-block;
-  margin: 10px; }
+  margin: 10px;
+  cursor: pointer; // to see if element is clickable!
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 0.4) 0 0 20px;
+  }
+}
 .ProductCard IMG {
   width: 200px;
   height: 200px;
@@ -72,3 +77,8 @@ body {
 .AdminForm {
   background: #fff;
   padding: 30px; }
+
+
+ li.list-group-item:hover  {
+  background-color: rgba(255, 255, 255, 0.9);
+}

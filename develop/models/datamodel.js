@@ -34,8 +34,28 @@ var DataModel = function (getJSON, map) {   // used dependency injection DataMod
         });
     };
 
+    var getDetails = function (jsonFile, ourArray, filter, filterVal) {
+        getJSON(jsonFile, function (json) {
+            var firstJSON = json.products.title;
+            map(firstJSON, function (elem) {
+                if (typeof filter !== 'undefined') {
+                    if (elem[filter] == filterVal) {
+                        ourArray.push(elem);
+                    }
+                } else {
+                    ourArray.push(elem);
+                }
+            });
+
+            console.log(ourArray());
+        });
+    };
+
+
+
     return {
         getCategories: getCategories,
-        getProducts: getProducts
+        getProducts: getProducts,
+        getDetails: getDetails
     }
 };

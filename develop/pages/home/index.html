@@ -19,7 +19,7 @@
         <div class="col-xs">
             <header class="AppHeader navbar navbar-full navbar-light bg-faded">
                 <a href="#"><img src="//www.pgs-soft.com/wp-content/themes/pgstemplate/img/header/pgs-logo-dark.png"
-                                 alt="Logo" class="AppHeader-logoImage"/>
+                                 alt="Logo" class="AppHeader-logoImage" data-bind="click: $root.nav.resetCategory"/><!--$root.products.promotedFilter -->
                 </a>
                 <ul class="nav nav-pills pull-xs-right">
                     <li class="nav-item"><a href="#" class="nav-link">Hello Admin!</a></li>
@@ -31,8 +31,8 @@
         <div class="col-md-3 col-lg-2">
             <h6 class="list-group-item">Categories</h6>
             <ul class="list-group" data-bind="foreach: nav.categoriesList">
-                <li class="list-group-item"><a href=""
-                                               data-bind="text: $data, click: $root.nav.getCategory.bind($data)"></a>
+                <li class="list-group-item" data-bind="click: $root.nav.getCategory.bind($data)"><a href=""
+                                               data-bind="text: $data"></a> <!--$root.products.resetPromoted -->
                 </li>
                 <!--<li class="list-group-item"><a href="" data-bind="text: $data, click: $root.getValue.bind($data)"></a></li>-->
                 <!--<li class="list-group-item"><a href="" data-bind="text: $data, click: function (data) { alert(data); }"></a></li>-->
@@ -42,34 +42,36 @@
         <div class="col-md-9 col-lg-10">
             <main class="AppMain">
                 <div class="ProductCards" data-bind="foreach: products.productsList()">
-                    <!--<div class="ProductCard" data-bind="visible: $data.promoted === true">-->
-                        <!--<img data-bind="attr:{src: $data.imageUrl}">-->
 
-                        <!--<p data-bind="text: $data.title"></p>-->
-                        <!--<p data-bind="visible: $data.promoted === true"> *promoted</p>-->
-
-                        <!--<p data-bind="text: $data.category"></p>-->
-                    <!--</div>-->
-
-                    <div class="ProductCard" data-bind="visible: $root.nav.ourCategory() !== 'undefined' && $data.category == $root.nav.ourCategory()">
+                    <!--VIEW: HOME/promoted-->
+                    <div class="ProductCard" data-bind="visible: typeof $root.nav.ourCategory() == 'undefined' && $data.promoted === true,
+                                                        click: $root.products.getProduct.bind($data)">
                         <img data-bind="attr:{src: $data.imageUrl}">
-
                         <p data-bind="text: $data.title"></p>
                         <p data-bind="visible: $data.promoted === true"> *promoted</p>
-
                         <p data-bind="text: $data.category"></p>
                     </div>
 
+                    <!--VIEW: by CATEGORY-->
+                    <div class="ProductCard" data-bind="visible: typeof $root.nav.ourCategory() !== 'undefined' && $data.category == $root.nav.ourCategory(),
+                                                         click: $root.products.getProduct.bind($data)">
+                        <img data-bind="attr:{src: $data.imageUrl}">
+                        <p data-bind="text: $data.title"></p>
+                        <p data-bind="visible: $data.promoted === true"> *promoted</p>
+                        <p data-bind="text: $data.category"></p>
+                    </div>
 
-                    <!--<div class="ProductDetails">
-                        <div class="ProductDetail">
+                    <!--VIEW: DETAIL of PRODUCT-->
+                    <div class="ProductDetails">
+                        <div class="ProductDetail" data-bind="visible: typeof $root.products.chosenProduct() !== 'undefined' && $data.title == $root.products.chosenProduct()">
                             <img data-bind="attr:{src: imageUrl}">
                             <h2 data-bind="text: $data.title"></h2>
                             <p class="ProductDetail--Price" data-bind="text: $data.price"></p>
                             <p class="ProductDetail--Amount" data-bind="text: $data.amount"></p>
                             <p class="ProductDetail--Description" data-bind="text: $data.description"></p>
                         </div>
-                    </div>-->
+                    </div>
+
                 </div>
             </main>
         </div>
@@ -83,7 +85,7 @@
 <script src="../../models/datamodel.js"></script>
 <script src="../../pages/navigation/navigation-viewmodel.js"></script>
 <script src="../../pages/products/products-viewmodel.js"></script>
-
+<script src="../../pages/product/detailproduct-viewmodel.js"></script>
 <script>
     var mvm = new MainViewModel();
     ko.applyBindings(mvm);
