@@ -6,14 +6,13 @@ var NavViewModel = function () {
     var dm = new DataModel($.getJSON, $.map);
     dm.getCategories(self.categoriesJson, self.categoriesList);
 
-    // choosing items
-
-    self.isPromoted = ko.observable();
-
     self.ourCategory = ko.observable();
     self.getCategory = function(elem) {
-        self.ourCategory(elem);
-        console.log('z funkcji getCategory: ' + elem);
-    }
+        alert('category '+elem.toLowerCase() + ' is clicked');
+        self.ourCategory(elem.toLowerCase());
+    };
+
+
+
 
 };
