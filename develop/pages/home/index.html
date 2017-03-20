@@ -19,7 +19,8 @@
         <div class="col-xs">
             <header class="AppHeader navbar navbar-full navbar-light bg-faded">
                 <a href="#"><img src="//www.pgs-soft.com/wp-content/themes/pgstemplate/img/header/pgs-logo-dark.png"
-                                 alt="Logo" class="AppHeader-logoImage" data-bind="click: $root.nav.resetCategory"/><!--$root.products.promotedFilter -->
+                                 alt="Logo" class="AppHeader-logoImage" data-bind="click: $root.nav.resetCategory"/>
+                    <!--$root.products.promotedFilter -->
                 </a>
                 <ul class="nav nav-pills pull-xs-right">
                     <li class="nav-item"><a href="#" class="nav-link">Hello Admin!</a></li>
@@ -29,15 +30,14 @@
     </div>
     <div class="row">
         <div class="col-md-3 col-lg-2">
-            <h6 class="list-group-item">Categories</h6>
-            <ul class="list-group" data-bind="foreach: nav.categoriesList">
-                <li class="list-group-item" data-bind="click: $root.nav.getCategory.bind($data)"><a href=""
-                                               data-bind="text: $data"></a> <!--$root.products.resetPromoted -->
-                </li>
-                <!--<li class="list-group-item"><a href="" data-bind="text: $data, click: $root.getValue.bind($data)"></a></li>-->
-                <!--<li class="list-group-item"><a href="" data-bind="text: $data, click: function (data) { alert(data); }"></a></li>-->
-            </ul>
-
+            <div class="AppNavigation">
+                <h6 class="list-group-item">Categories</h6>
+                <ul class="list-group" data-bind="foreach: nav.categoriesList">
+                    <li class="list-group-item" data-bind="click: $root.nav.getCategory.bind($data)"><a href=""
+                                                                                                        data-bind="text: $data"></a>
+                    </li>
+                </ul>
+            </div>
         </div>
         <div class="col-md-9 col-lg-10">
             <main class="AppMain">
@@ -63,7 +63,8 @@
 
                     <!--VIEW: DETAIL of PRODUCT-->
                     <div class="ProductDetails">
-                        <div class="ProductDetail" data-bind="visible: typeof $root.products.chosenProduct() !== 'undefined' && $data.title == $root.products.chosenProduct()">
+                        <div class="ProductDetail"
+                             data-bind="visible: typeof $root.products.chosenProduct() !== 'undefined' && $data.title == $root.products.chosenProduct()">
                             <img data-bind="attr:{src: imageUrl}">
                             <h2 data-bind="text: $data.title"></h2>
                             <p class="ProductDetail--Price" data-bind="text: $data.price"></p>
