@@ -4,7 +4,7 @@
 
     self.nav = new NavViewModel();
     self.products = new ProductsViewModel();
-    self.details = new DetailProductViewModel();
+    //self.details = new DetailProductViewModel();
 
 };
 

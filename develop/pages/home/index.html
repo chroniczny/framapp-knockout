@@ -32,7 +32,7 @@
         </div>
         <div class="row">
             <div class="col-md-3 col-lg-2">
-                <div class="AppNavigation">
+                <div class="AppNavigation" data-bind="visible: DataModel.prototype.isCatReady() === true">
                     <h6 class="list-group-item">Categories</h6>
                     <ul class="list-group" data-bind="foreach: nav.categoriesList">
                         <li class="list-group-item" data-bind="click: $root.nav.getCategory.bind($data)">
@@ -40,16 +40,21 @@
                         </li>
                     </ul>
                 </div>
+
+                <div class="spinner-wraper" data-bind="visible: DataModel.prototype.isCatReady() === false">
+                    <div class="spinner">
+                        <div class="dot1"></div>
+                        <div class="dot2"></div>
+                    </div>
+                </div>
             </div>
             <div class="col-md-9 col-lg-10">
                 <main class="AppMain">
                     <!--<div class="ProductCards" data-bind="template: {name: 'template-Home', foreach: products.productsList()}">-->
                     <div class="ProductCards" data-bind="foreach: products.productsList()">
-
                         <!--VIEW: HOME/promoted-->
-                        <div class="ProductCard" data-bind="visible: typeof $root.nav.ourCategory() == 'undefined' && $data.promoted === true,
+                        <div class="ProductCard" data-bind="visible: typeof $root.nav.ourCategory() == 'undefined' && $data.promoted === true && DataModel.prototype.isProdReady() === true,
                                                         click: $root.products.getProduct.bind($data)">
-
                             <!--<div class="ProductCard" data-bind="visible: $data.promoted === true,-->
                             <!--click: $root.products.getProduct.bind($data)">-->
                             <img data-bind="attr:{src: $data.imageUrl}">
@@ -58,23 +63,28 @@
                             <p data-bind="text: $data.category"></p>
                         </div>
 
-
                         <!--VIEW: by CATEGORY-->
-                        <div class="ProductCard" data-bind="visible: typeof $root.nav.ourCategory() !== 'undefined' && $data.category == $root.nav.ourCategory(),
+                        <div class="ProductCard" data-bind="visible: typeof $root.nav.ourCategory() !== 'undefined' && $data.category == $root.nav.ourCategory() && DataModel.prototype.isProdReady() === true,
                                                          click: $root.products.getProduct.bind($data)">
-
                             <img data-bind="attr:{src: $data.imageUrl}">
                             <p data-bind="text: $data.title"></p>
                             <p data-bind="visible: $data.promoted === true"> *promoted</p>
                             <p data-bind="text: $data.category"></p>
                         </div>
+
+                        <div class="spinner-wraper" data-bind="visible: DataModel.prototype.isProdReady() === false">
+                            <div class="spinner">
+                                <div class="dot1"></div>
+                                <div class="dot2"></div>
+                            </div>
+                        </div>
                     </div>
+
                     <!--VIEW: DETAIL of PRODUCT-->
                     <div class="ProductDetails">
 
                         <div class="ProductDetails" data-bind="foreach: products.productsList()">
-                            <div class="ProductDetail" data-bind="visible: title == $root.products.chosenProduct()">
-
+                            <div class="ProductDetail" data-bind="visible: title == $root.products.chosenProduct() && DataModel.prototype.isDetReady() === false">
                                 <img data-bind="attr:{src: $data.imageUrl}">
                                 <h2 data-bind="text: $data.title"></h2>
                                 <p class="ProductDetail--Price" data-bind="text: $data.price"></p>
@@ -82,23 +92,32 @@
                                 <p class="ProductDetail--Description" data-bind="text: $data.description"></p>
                             </div>
                         </div>
+
+                        <div class="spinner-wraper" data-bind="visible: DataModel.prototype.isDetReady() === false">
+                            <div class="spinner">
+                                <div class="dot1"></div>
+                                <div class="dot2"></div>
+                            </div>
+                        </div>
+
+                    </div>
                 </main>
-                </div>
             </div>
         </div>
+    </div>
 
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/knockout/3.4.1/knockout-min.js"></script>
-        <!--<script data-main="../../scripts/viewmodels" src="../../scripts/require.js"></script>-->
-        <script src="../../pages/viewmodels.js"></script>
-        <script src="../../models/datamodel.js"></script>
-        <script src="../../pages/navigation/navigation-viewmodel.js"></script>
-        <script src="../../pages/products/products-viewmodel.js"></script>
-        <script src="../../pages/product/detailproduct-viewmodel.js"></script>
-        <script>
-            var mvm = new MainViewModel();
-            ko.applyBindings(mvm);
-        </script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/knockout/3.4.1/knockout-min.js"></script>
+    <!--<script data-main="../../scripts/viewmodels" src="../../scripts/require.js"></script>-->
+    <script src="../../pages/viewmodels.js"></script>
+    <script src="../../models/datamodel.js"></script>
+    <script src="../../pages/navigation/navigation-viewmodel.js"></script>
+    <script src="../../pages/products/products-viewmodel.js"></script>
+    <script src="../../pages/product/detailproduct-viewmodel.js"></script>
+    <script>
+        var mvm = new MainViewModel();
+        ko.applyBindings(mvm);
+    </script>
 </body>
 
 </html>
