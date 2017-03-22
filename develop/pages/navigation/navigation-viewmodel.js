@@ -7,7 +7,7 @@ var NavViewModel = function () {
     dm.getCategories(self.categoriesJson, self.categoriesList);
 
     self.ourCategory = ko.observable();
-    self.getCategory = function(elem) {
+    self.getCategory = function (elem) {
         self.ourCategory(elem.toLowerCase());
     };
 

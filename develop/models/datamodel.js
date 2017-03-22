@@ -1,53 +1,32 @@
 var DataModel = function (getJSON, map) {   // used dependency injection DataModel($.getJSON, $.map)
 
-    var getCategories = function (jsonFile, ourArray, filter, filterVal) {
+    var getCategories = function (jsonFile, ourArray) {
         getJSON(jsonFile, function (json) {
             var firstJSON = json.categories;
             map(firstJSON, function (elem) {
-                if (typeof filter !== 'undefined') {
-                    if (elem[filter] == filterVal) {
-                        ourArray.push(elem.title);
-                    }
-                } else {
-                    ourArray.push(elem.title);
-                }
+                ourArray.push(elem.title);
             });
-
-            console.log(ourArray());
+            // console.log(ourArray());
         });
     };
 
-    var getProducts = function (jsonFile, ourArray, filter, filterVal) {
+    var getProducts = function (jsonFile, ourArray) {
         getJSON(jsonFile, function (json) {
             var firstJSON = json.products;
             map(firstJSON, function (elem) {
-                if (typeof filter !== 'undefined') {
-                    if (elem[filter] == filterVal) {
-                        ourArray.push(elem);
-                    }
-                } else {
-                    ourArray.push(elem);
-                }
+                ourArray.push(elem);
             });
-
-            console.log(ourArray());
+            // console.log(ourArray());
         });
     };
 
-    var getDetails = function (jsonFile, ourArray, filter, filterVal) {
+    var getDetails = function (jsonFile, ourArray) {
         getJSON(jsonFile, function (json) {
             var firstJSON = json.products.guid;
             map(firstJSON, function (elem) {
-                if (typeof filter !== 'undefined') {
-                    if (elem[filter] == filterVal) {
-                        ourArray.push(elem);
-                    }
-                } else {
-                    ourArray.push(elem);
-                }
+                ourArray.push(elem);
             });
-
-            console.log(ourArray());
+            // console.log(ourArray());
         });
     };
 

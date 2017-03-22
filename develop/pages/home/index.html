@@ -20,7 +20,9 @@
             <div class="col-xs">
                 <header class="AppHeader navbar navbar-full navbar-light bg-faded">
                     <a href="#"><img src="//www.pgs-soft.com/wp-content/themes/pgstemplate/img/header/pgs-logo-dark.png" alt="Logo" class="AppHeader-logoImage"
-                            data-bind="click: $root.nav.resetCategory" />
+                            data-bind="click: $root.products.goToHomeView" />
+                        <!-- data-bind="click: $root.products.goToHomeView"-->
+                        <!--$root.products.promotedFilter -->
                     </a>
                     <ul class="nav nav-pills pull-xs-right">
                         <li class="nav-item"><a href="#" class="nav-link">Hello Admin!</a></li>
@@ -41,53 +43,62 @@
             </div>
             <div class="col-md-9 col-lg-10">
                 <main class="AppMain">
-                    <div class="ProductCards" data-bind="foreach: products.productsList()"> <!-- lista naszych produktow wybranych z funkcji getProducts -->
+                    <!--<div class="ProductCards" data-bind="template: {name: 'template-Home', foreach: products.productsList()}">-->
+                    <div class="ProductCards" data-bind="foreach: products.productsList()">
+
                         <!--VIEW: HOME/promoted-->
                         <div class="ProductCard" data-bind="visible: typeof $root.nav.ourCategory() == 'undefined' && $data.promoted === true,
                                                         click: $root.products.getProduct.bind($data)">
+
+                            <!--<div class="ProductCard" data-bind="visible: $data.promoted === true,-->
+                            <!--click: $root.products.getProduct.bind($data)">-->
                             <img data-bind="attr:{src: $data.imageUrl}">
                             <p data-bind="text: $data.title"></p>
                             <p data-bind="visible: $data.promoted === true"> *promoted</p>
                             <p data-bind="text: $data.category"></p>
                         </div>
+
 
                         <!--VIEW: by CATEGORY-->
                         <div class="ProductCard" data-bind="visible: typeof $root.nav.ourCategory() !== 'undefined' && $data.category == $root.nav.ourCategory(),
                                                          click: $root.products.getProduct.bind($data)">
+
                             <img data-bind="attr:{src: $data.imageUrl}">
                             <p data-bind="text: $data.title"></p>
                             <p data-bind="visible: $data.promoted === true"> *promoted</p>
                             <p data-bind="text: $data.category"></p>
                         </div>
+                    </div>
+                    <!--VIEW: DETAIL of PRODUCT-->
+                    <div class="ProductDetails">
 
-                        <!--VIEW: DETAIL of PRODUCT-->
-                        <div class="ProductDetails">
-                            <div class="ProductDetail" data-bind="visible: typeof $root.products.chosenProduct() !== 'undefined' && $data.guid == $root.products.chosenProduct()">
-                                <img data-bind="attr:{src: imageUrl}">
+                        <div class="ProductDetails" data-bind="foreach: products.productsList()">
+                            <div class="ProductDetail" data-bind="visible: title == $root.products.chosenProduct()">
+
+                                <img data-bind="attr:{src: $data.imageUrl}">
                                 <h2 data-bind="text: $data.title"></h2>
                                 <p class="ProductDetail--Price" data-bind="text: $data.price"></p>
                                 <p class="ProductDetail--Amount" data-bind="text: $data.amount"></p>
                                 <p class="ProductDetail--Description" data-bind="text: $data.description"></p>
                             </div>
                         </div>
-                    </div>
                 </main>
+                </div>
             </div>
         </div>
-    </div>
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/knockout/3.4.1/knockout-min.js"></script>
-    <!--<script data-main="../../scripts/viewmodels" src="../../scripts/require.js"></script>-->
-    <script src="../../pages/viewmodels.js"></script>
-    <script src="../../models/datamodel.js"></script>
-    <script src="../../pages/navigation/navigation-viewmodel.js"></script>
-    <script src="../../pages/products/products-viewmodel.js"></script>
-    <script src="../../pages/product/detailproduct-viewmodel.js"></script>
-    <script>
-        var mvm = new MainViewModel();
-        ko.applyBindings(mvm);
-    </script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/knockout/3.4.1/knockout-min.js"></script>
+        <!--<script data-main="../../scripts/viewmodels" src="../../scripts/require.js"></script>-->
+        <script src="../../pages/viewmodels.js"></script>
+        <script src="../../models/datamodel.js"></script>
+        <script src="../../pages/navigation/navigation-viewmodel.js"></script>
+        <script src="../../pages/products/products-viewmodel.js"></script>
+        <script src="../../pages/product/detailproduct-viewmodel.js"></script>
+        <script>
+            var mvm = new MainViewModel();
+            ko.applyBindings(mvm);
+        </script>
 </body>
 
 </html>
