@@ -7,8 +7,9 @@ var ProductsViewModel = function () {
 
     dm.getProducts(self.productsJson, self.productsList);
 
+
     self.chosenProduct = ko.observable();
-    self.getProduct = function(elem) {
+    self.getProduct = function (elem) {
         self.chosenProduct(elem.title);
     };
 

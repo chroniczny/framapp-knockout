@@ -6,7 +6,7 @@ var DataModel = function (getJSON, map) {   // used dependency injection DataMod
             map(firstJSON, function (elem) {
                 ourArray.push(elem.title);
             });
-            console.log(ourArray());
+            // console.log(ourArray());
         });
     };
 
@@ -16,7 +16,7 @@ var DataModel = function (getJSON, map) {   // used dependency injection DataMod
             map(firstJSON, function (elem) {
                 ourArray.push(elem);
             });
-            console.log(ourArray());
+            // console.log(ourArray());
         });
     };
 
@@ -26,7 +26,7 @@ var DataModel = function (getJSON, map) {   // used dependency injection DataMod
             map(firstJSON, function (elem) {
                 ourArray.push(elem);
             });
-            console.log(ourArray());
+            // console.log(ourArray());
         });
     };
 
