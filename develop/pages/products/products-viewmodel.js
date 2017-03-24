@@ -23,13 +23,18 @@ var ProductsViewModel = function () {
                 self.categorizedProducts.push(self.productsList()[i]);
             }
         }
-        self.chosenProduct(null); // chosing category, delete Details from UI
+        self.chosenProduct(null); // choosing category, delete Details from UI
+        self.isPromoVisible(false); //
         return self.categorizedProducts;
     };
+
+    self.isPromoVisible = ko.observable(true); // to show or hide promoted-home view
 
     self.chosenProduct = ko.observable();
     self.getProduct = function () {
         self.chosenProduct(this.title);
+        self.isPromoVisible(false);
         self.categorizedProducts.removeAll(); // removes categorized ProductCards from UI, Details of product stays in UI
+
     };
 };

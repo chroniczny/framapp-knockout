@@ -5,18 +5,12 @@
     self.nav = new NavViewModel();
     self.products = new ProductsViewModel(self.nav);
 
-    // self.isVisibleNow = ko.observable(true);
-    // self.showDetails = function() {
-    //     console.log('root function OK');
-    //     self.isVisibleNow(false);
-    // }
-
-
-
+    self.goToHome = function () {
+        self.products.categorizedProducts.removeAll();
+        self.products.chosenProduct(null);
+        self.products.isPromoVisible(true);
+    };
 };
-
-
-
 
 
 
