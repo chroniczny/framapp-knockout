@@ -48,30 +48,22 @@
             </div>
             <div class="col-md-9 col-lg-10">
                 <main class="AppMain">
-                    <!--<div class="ProductCards" data-bind="template: {name: 'template-Home', foreach: products.productsList()}">-->
-                    <div class="ProductCards" data-bind="foreach: products.productsList()">
-                        <!--VIEW: HOME/promoted-->
-                        <!--<div class="ProductCard" id="promotedHome" data-bind="visible: typeof $root.nav.ourCategory() == 'undefined' && $data.promoted === true && DataModel.prototype.isProdReady() === true,-->
-                                                        <!--click: $root.products.getProduct.bind($data)">-->
+                    <!--VIEW: HOME/promoted-->
+                    <div class="ProductCards" data-bind="visible: typeof $root.nav.ourCategory() === 'undefined',
+                                                        foreach: products.productsList()">
 
-                            <!--&lt;!&ndash;<div class="ProductCard" data-bind="visible: $data.promoted === true,&ndash;&gt;-->
-                            <!--&lt;!&ndash;click: $root.products.getProduct.bind($data)">&ndash;&gt;-->
-                            <!--<img data-bind="attr:{src: $data.imageUrl}">-->
-                            <!--<p data-bind="text: $data.title"></p>-->
-                            <!--<p data-bind="visible: $data.promoted === true"> *promoted</p>-->
-                            <!--<p data-bind="text: $data.category"></p>-->
-                        <!--</div>-->
+                        <div class="ProductCard" id="promotedHome" data-bind="visible: $data.promoted === true && DataModel.prototype.isProdReady() === true,
+                                                        click: $root.products.getProduct.bind($data)">
+                            <img data-bind="attr:{src: $data.imageUrl}">
+                            <p data-bind="text: $data.title"></p>
+                            <p data-bind="visible: $data.promoted === true"> *promoted</p>
+                            <p data-bind="text: $data.category"></p>
+                        </div>
 
-                        <!--VIEW: by CATEGORY-->
-                        <!--<div class="ProductCard" id="categorized" data-bind="visible: typeof $root.nav.ourCategory() !== 'undefined' && $data.category == $root.nav.ourCategory() && DataModel.prototype.isProdReady() === true,-->
-                                                         <!--click: $root.products.getProduct.bind($data)">-->
-                            <!--<img data-bind="attr:{src: $data.imageUrl}">-->
-                            <!--<p data-bind="text: $data.title"></p>-->
-                            <!--<p data-bind="visible: $data.promoted === true"> *promoted</p>-->
-                            <!--<p data-bind="text: $data.category"></p>-->
-                        <!--</div>-->
+                    <!--VIEW: by CATEGORY-->
                     </div>
-                    <div class="ProductCards" data-bind="foreach: $root.products.categorizedProducts">
+                    <div class="ProductCards" data-bind="visible: typeof $root.nav.ourCategory(),
+                                                        foreach: $root.products.categorizedProducts">
                         <div class="ProductCard" id="categorized" data-bind="click: $root.products.getProduct.bind($data)">
                             <img data-bind="attr:{src: $data.imageUrl}">
                             <p data-bind="text: $data.title"></p>
@@ -79,12 +71,12 @@
                             <p data-bind="text: $data.category"></p>
                         </div>
 
-                        <!--<div class="spinner-wraper" data-bind="visible: DataModel.prototype.isProdReady() === false">-->
-                            <!--<div class="spinner">-->
-                                <!--<div class="dot1"></div>-->
-                                <!--<div class="dot2"></div>-->
-                            <!--</div>-->
-                        <!--</div>-->
+                        <div class="spinner-wraper" data-bind="visible: DataModel.prototype.isProdReady() === false">
+                            <div class="spinner">
+                                <div class="dot1"></div>
+                                <div class="dot2"></div>
+                            </div>
+                        </div>
                     </div>
 
                     <!--VIEW: DETAIL of PRODUCT-->
@@ -100,12 +92,12 @@
                             </div>
                         </div>
 
-                        <!--<div class="spinner-wraper" data-bind="visible: DataModel.prototype.isDetReady() === false">-->
-                            <!--<div class="spinner">-->
-                                <!--<div class="dot1"></div>-->
-                                <!--<div class="dot2"></div>-->
-                            <!--</div>-->
-                        <!--</div>-->
+                        <div class="spinner-wraper" data-bind="visible: DataModel.prototype.isDetReady() === false">
+                            <div class="spinner">
+                                <div class="dot1"></div>
+                                <div class="dot2"></div>
+                            </div>
+                        </div>
 
                     </div>
                 </main>
@@ -122,29 +114,8 @@
     <script src="../../pages/products/products-viewmodel.js"></script>
     <!--<script src="../../pages/product/detailproduct-viewmodel.js"></script>-->
     <script>
+        var shouter = new ko.subscribable(); // defined globally 'post-box' to pas messages between different view models
         var mvm = new MainViewModel();
-
-//        $(document).on('click', '.ProductCard', function(){
-//            console.log('ProductCard was clicked');
-//            $('.ProductCards').hide('slow');
-//            $('.ProductDetails').show('slow');
-//        });
-//
-//        $(document).on('click', '.list-group-item', function(){
-//            console.log('category was clicked');
-//            $('.ProductCards').show('slow');
-//            $('#promotedHome').hide('slow');
-//            $('.ProductDetails').hide('slow');
-//        });
-//
-//        $(document).on('click', '.AppHeader-logoImage', function(){
-//            console.log('logoImage was it clicked?');
-//            $('.ProductDetails').hide('slow');
-//            $('.ProductCards').show('slow');
-//            $('#promotedHome').show('slow');
-//            $('#categorized').hide('slow');
-//        });
-
 
         ko.applyBindings(mvm);
     </script>

@@ -7,36 +7,14 @@ var NavViewModel = function () {
     dm.getCategories(self.categoriesJson, self.categoriesList);
 
 
-    self.ourCategory = ko.observable();
+    self.ourCategory = ko.observable(); // message variable which want to pass to another view model (products)
+
+    self.ourCategory.subscribe(function(newValue){  // send observable variable to
+        shouter.notifySubscribers(newValue, 'clickedCategory'); // the 'topic' named shouter post-box
+    });
+
     self.getCategory = function () {
         self.ourCategory(this.toLowerCase());
-        console.log(this.toLowerCase());
     };
-
-//     var ViewModelOne = function() {
-//         //automatically update the observable's value from ko.postbox messages on "myEditableTopic"
-//         this.isEditable = ko.observable().subscribeTo("myEditableTopic");
-//     };
-//
-//     var ViewModelTwo = function() {
-//         //automatically publish changes through ko.postbox using "myEditableTopic" as the topic
-//         this.editable = ko.observable(false).publishOn("myEditableTopic");
-//     };
-//
-//     var ViewModelThree = function() {
-//         //both subscribe to and publish changes on the topic "myEditableTopic"
-//         this.canEdit = ko.observable().syncWith("myEditableTopic");
-//     };
-//
-// //a non-KO component can also participate in this communication
-//     var SomeOtherComponent = function() {
-//         //subscribe directly to the topic
-//         ko.postbox.subscribe("myEditableTopic", function(newValue) {
-//             //do something with newValue
-//         });
-//
-//         //publish on the topic
-//         ko.postbox.publish("myEditableTopic", "some new value");
-//     };
 
 };

@@ -3,7 +3,7 @@
     var self = this;
 
     self.nav = new NavViewModel();
-    self.products = new ProductsViewModel();
+    self.products = new ProductsViewModel(self.nav);
 
     // self.isVisibleNow = ko.observable(true);
     // self.showDetails = function() {
