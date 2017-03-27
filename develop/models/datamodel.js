@@ -1,3 +1,5 @@
+'use strict';
+
 var DataModel = function (getJSON, map) {   // used dependency injection DataModel($.getJSON, $.map)
 
 

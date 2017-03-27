@@ -1,3 +1,5 @@
+'use strict';
+
 var ProductsViewModel = function () {
     var self = this;
     self.products = [];
@@ -15,25 +17,55 @@ var ProductsViewModel = function () {
     }, self, "clickedCategory"); // using 'topic' named when defining message to passing - in other viewModel -> nav
 
     self.productByCategory = function () { //
-        self.categorizedProducts.removeAll(); // clean observable array from other
+        location.hash = self.chosenCategory(); // PASTE
 
-        for (var i = 0; i < self.productsList().length; i++) {  // make collection of product from chosen category
-            if (self.productsList()[i].category === self.chosenCategory()) {
-                self.categorizedProducts.push(self.productsList()[i]);
-            }
-        }
-        self.chosenProduct(null); // category is chosen so delete Details from UI
-        self.isPromoVisible(false); // make home-promoted view invisible
+        // self.categorizedProducts.removeAll(); // clean observable array from other
 
-        return self.categorizedProducts;
+        // for (var i = 0; i < self.productsList().length; i++) {  // make collection of product from chosen category
+        //     if (self.productsList()[i].category === self.chosenCategory()) {
+        //         self.categorizedProducts.push(self.productsList()[i]);
+        //     }
+        // }
+        // self.chosenProduct(null); // category is chosen so delete Details from UI
+        // self.isPromoVisible(false); // make home-promoted view invisible
+
+        // return self.categorizedProducts;
     };
 
     self.isPromoVisible = ko.observable(true); // to show or hide promoted-home view
 
     self.chosenProduct = ko.observable();
     self.getProduct = function () {
-        self.chosenProduct(this.title); // shows card with chosen product title
-        self.isPromoVisible(false); // make home-promoted view invisible
-        self.categorizedProducts.removeAll(); // removes categorized ProductCards from UI, Details of product stays in UI
+        location.hash = this.category +'/'+this.title; //
+
+        // self.chosenProduct(this.title); // shows card with chosen product title
+        // self.isPromoVisible(false); // make home-promoted view invisible
+        // self.categorizedProducts.removeAll(); // removes categorized ProductCards from UI, Details of product stays in UI
     };
+
+
+    // Sammy(function(){
+        // this.get('#:category', function(){
+        //     self.categorizedProducts.removeAll(); // clean observable array from other
+        //
+        //     for (var i = 0; i < self.productsList().length; i++) {  // make collection of product from chosen category
+        //         if (self.productsList()[i].category === this.params.category) {
+        //             self.categorizedProducts.push(self.productsList()[i]);
+        //         }
+        //     }
+        //     self.chosenProduct(null); // category is chosen so delete Details from UI
+        //     self.isPromoVisible(false); // make home-promoted view invisible
+        //
+        //     console.log("list all: "+self.productsList().length);
+        //     console.log("categorized: "+this.params.category+" "+self.categorizedProducts().length);
+        //
+        //     return self.categorizedProducts;
+        // });
+        // this.get('', function() { this.app.runRoute('get', '#home-promoted') });
+
+    // }).run();
+
+
+
+
 };
