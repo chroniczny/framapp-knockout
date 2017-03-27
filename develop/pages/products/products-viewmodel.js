@@ -14,17 +14,17 @@ var ProductsViewModel = function () {
         self.chosenCategory(newValue); // passing message into value observable here...
     }, self, "clickedCategory"); // using 'topic' named when defining message to passing - in other viewModel -> nav
 
-    self.productByCategory = function () {
+    self.productByCategory = function () { //
         self.categorizedProducts.removeAll(); // clean observable array from other
 
-        for (var i = 0; i < self.productsList().length; i++) {
-
+        for (var i = 0; i < self.productsList().length; i++) {  // make collection of product from chosen category
             if (self.productsList()[i].category === self.chosenCategory()) {
                 self.categorizedProducts.push(self.productsList()[i]);
             }
         }
-        self.chosenProduct(null); // choosing category, delete Details from UI
-        self.isPromoVisible(false); //
+        self.chosenProduct(null); // category is chosen so delete Details from UI
+        self.isPromoVisible(false); // make home-promoted view invisible
+
         return self.categorizedProducts;
     };
 
@@ -32,9 +32,8 @@ var ProductsViewModel = function () {
 
     self.chosenProduct = ko.observable();
     self.getProduct = function () {
-        self.chosenProduct(this.title);
-        self.isPromoVisible(false);
+        self.chosenProduct(this.title); // shows card with chosen product title
+        self.isPromoVisible(false); // make home-promoted view invisible
         self.categorizedProducts.removeAll(); // removes categorized ProductCards from UI, Details of product stays in UI
-
     };
 };
