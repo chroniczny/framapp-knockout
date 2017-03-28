@@ -33,8 +33,8 @@
                 <div class="AppNavigation" data-bind="visible: DataModel.prototype.isCatReady() === true">
                     <h6 class="list-group-item">Categories</h6>
                     <ul class="list-group" data-bind="foreach: nav.categoriesList, click: products.productByCategory">
-                        <li class="list-group-item" data-bind="click: $root.nav.getCategory.bind($data)">
-                            <a href="" data-bind="text: $data"></a>
+                        <li class="list-group-item" data-bind="click: $root.nav.getCategory.bind($data.title)">
+                            <a href="" data-bind="text: $data.title"></a>
                         </li>
                     </ul>
                 </div>

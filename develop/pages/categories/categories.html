@@ -23,30 +23,61 @@
         <div class="col-md-3 col-lg-2">
             <nav class="AppNavigation">
                 <ul class="list-group">
-                    <li class="list-group-item"><a href="KO-categories.html">Categories</a></li>
-                    <li class="list-group-item"><a href="KO-products.html">Products</a></li>
+                    <li class="list-group-item"><a href="categories.html">Categories</a></li>
+                    <li class="list-group-item"><a href="products.html">Products</a></li>
                 </ul>
             </nav>
         </div>
         <div class="col-md-9 col-lg-10">
             <main class="AppMain">
                 <div class="AdminTable table-responsive">
-                    <table class="table">
+
+                    <table class="table" >
                         <thead>
                         <th>ID</th>
                         <th>Name</th>
                         <th>Action</th>
                         </thead>
-                        <tbody>
-                        <td>category-1</td>
-                        <td>category-2</td>
-                        <td><a href="KO-category.html" class="btn">Edit</a></td>
+                        <tbody data-bind="foreach: nav.categoriesList">
+                        <!--<tr>-->
+                            <td data-bind="text: $data.id">category-1</td>
+                            <td data-bind="text: $data.title">category-2</td>
+                            <td data-bind="click: $root.nav.getCategory.bind($data.title)"><a href="../../pages/category/category.html" class="btn">Edit</a></td>
+                        <!--</tr>-->
                         </tbody>
                     </table>
+                </div>
+                <div class="AdminForm" data-bind="with: $root.nav.ourCategory()">
+                    <form>
+                        <fieldset class="form-group">
+                            <label>Category title</label>
+                            <input type="text" placeholder="Title" class="form-control" data-bind="value: $data"/>
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <label >Description</label>
+                            <textarea placeholder="Category description" class="form-control" data-bind="value: $data.details"></textarea>
+                        </fieldset>
+                        <div class="AdminForm-buttons"><a href="admin-products.html" class="btn btn-primary">Save</a></div>
+                    </form>
                 </div>
             </main>
         </div>
     </div>
 </div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/knockout/3.4.1/knockout-min.js"></script>
+<!--<script data-main="../../scripts/viewmodels" src="../../scripts/require.js"></script>-->
+<script src="../../models/main-viewmodel.js"></script>
+<script src="../../models/datamodel.js"></script>
+<script src="../../models/navigation-viewmodel.js"></script>
+<script src="../../models/products-viewmodel.js"></script>
+<!--<script src="../../pages/product/detailproduct-viewmodel.js"></script>-->
+<script>
+    var shouter = new ko.subscribable(); // defined globally 'post-box' to pas messages between different view models
+    var mvm = new MainViewModel();
+
+    ko.applyBindings(mvm);
+</script>
+
 </body>
 </html>

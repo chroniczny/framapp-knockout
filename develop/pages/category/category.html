@@ -35,15 +35,15 @@
 
         <div class="col-md-9 col-lg-10">
             <main class="AppMain">
-                <div class="AdminForm">
+                <div class="AdminForm" data-bind="with: $root.nav.ourCategory()">
                     <form>
                         <fieldset class="form-group">
                             <label>Category title</label>
-                            <input type="text" placeholder="Title" class="form-control"/>
+                            <input type="text" placeholder="Title" class="form-control" data-bind="value: $data"/>
                         </fieldset>
                         <fieldset class="form-group">
-                            <label>Description</label>
-                            <textarea placeholder="Product description" class="form-control"></textarea>
+                            <label >Description</label>
+                            <textarea placeholder="Category description" class="form-control" data-bind="value: $data.details"></textarea>
                         </fieldset>
                         <div class="AdminForm-buttons"><a href="admin-products.html" class="btn btn-primary">Save</a></div>
                     </form>
@@ -52,5 +52,20 @@
         </div>
     </div>
 </div>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/knockout/3.4.1/knockout-min.js"></script>
+<!--<script data-main="../../scripts/viewmodels" src="../../scripts/require.js"></script>-->
+<script src="../../models/main-viewmodel.js"></script>
+<script src="../../models/datamodel.js"></script>
+<script src="../../models/navigation-viewmodel.js"></script>
+<script src="../../models/products-viewmodel.js"></script>
+<!--<script src="../../pages/product/detailproduct-viewmodel.js"></script>-->
+<script>
+    var shouter = new ko.subscribable(); // defined globally 'post-box' to pas messages between different view models
+    var mvm = new MainViewModel();
+
+    ko.applyBindings(mvm);
+</script>
 </body>
 </html>

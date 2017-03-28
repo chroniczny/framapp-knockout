@@ -24,9 +24,10 @@ body {
 .AppNavigation .list-group-item:first-child, .AppNavigation .list-group-item:last-child {
   border-radius: 0; }
 .AppNavigation A {
-  color: #F06C19; }
-.AppNavigation A:hover {
-  color: #F06C19; }
+  color: #F06C19;
+  &:hover {
+    color: #F06C19; }
+}
 
 .ProductCards, .ProductDetails {
   display: flex;
@@ -81,6 +82,12 @@ body {
   padding: 30px; }
 
 
- li.list-group-item:hover  {
-  background-color: rgba(255, 255, 255, 0.9);
-}
+ li.list-group-item {
+   &:hover  {
+     background-color: rgba(255, 255, 255, 0.9);
+     font-weight: 400;
+   }
+ }
+
+
+
