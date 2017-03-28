@@ -1,5 +1,3 @@
-.gitignore
 node_modules/
 release/
 Web.config
-.idea/workspace.xml
