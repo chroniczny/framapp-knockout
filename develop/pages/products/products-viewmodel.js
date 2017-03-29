@@ -1,10 +1,9 @@
 var ProductsViewModel = function () {
     var self = this;
-    self.products = [];
-    self.productsList = ko.observableArray(self.products);
+    self.productsList = ko.observableArray();
     self.productsJson = 'https://frammapp-knockout.firebaseio.com/.json'; //'https://project-5613440220430148247.firebaseio.com/api/v1/categories.json';
     var dm = new DataModel($.getJSON, $.map);
-    dm.getProducts(self.productsJson, self.productsList);
+    dm.items(self.productsJson, self.productsList);
 
 
     self.categorizedProducts = ko.observableArray();

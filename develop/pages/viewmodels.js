@@ -11,7 +11,3 @@
         self.products.isPromoVisible(true); // show promoted products from all categories
     };
 };
-
-
-
-
