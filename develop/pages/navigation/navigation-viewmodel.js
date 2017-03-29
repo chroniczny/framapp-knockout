@@ -1,3 +1,5 @@
+'use strict';
+
 var NavViewModel = function () {
     var self = this;
     self.categoriesList = ko.observableArray();
