@@ -7,7 +7,7 @@ var DataModel = function (getJSON, map) {   // used dependency injection DataMod
         getJSON(jsonFileUrl, function (json) {
             var firstJSON = json.categories;
             map(firstJSON, function (elem) {
-                categoriesArray.push(elem.title);
+                categoriesArray.push(elem);
                 DataModel.isCategoriesReady(true);
             });
             // console.log(ourArray());
