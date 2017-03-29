@@ -30,7 +30,7 @@
         </div>
         <div class="row">
             <div class="col-md-3 col-lg-2">
-                <div class="AppNavigation" data-bind="visible: DataModel.prototype.isCatReady() === true">
+                <div class="AppNavigation" data-bind="visible: DataModel.isCategoriesReady()">
                     <h6 class="list-group-item">Categories</h6>
                     <ul class="list-group" data-bind="foreach: nav.categoriesList, click: products.productByCategory">
                         <li class="list-group-item" data-bind="click: $root.nav.getCategory.bind($data)">
@@ -39,7 +39,7 @@
                     </ul>
                 </div>
 
-                <div class="spinner-wraper" data-bind="visible: DataModel.prototype.isCatReady() === false">
+                <div class="spinner-wraper" data-bind="visible: !DataModel.isCategoriesReady()">
                     <div class="spinner">
                         <div class="dot1"></div>
                         <div class="dot2"></div>
@@ -52,7 +52,7 @@
                     <div class="ProductCards" data-bind="visible: $root.products.isPromoVisible(),
                                                         foreach: products.productsList()">
 
-                        <div class="ProductCard" id="promotedHome" data-bind="visible: $data.promoted === true && DataModel.prototype.isProdReady() === true,
+                        <div class="ProductCard" id="promotedHome" data-bind="visible: $data.promoted === true && DataModel.isProductReady(),
                                                         click: $root.products.getProduct.bind($data)">
                             <img data-bind="attr:{src: $data.imageUrl}">
                             <p data-bind="text: $data.title"></p>
@@ -71,7 +71,7 @@
                             <p data-bind="text: $data.category"></p>
                         </div>
 
-                        <div class="spinner-wraper" data-bind="visible: DataModel.prototype.isProdReady() === false">
+                        <div class="spinner-wraper" data-bind="visible: !DataModel.isProductReady()">
                             <div class="spinner">
                                 <div class="dot1"></div>
                                 <div class="dot2"></div>
@@ -112,13 +112,8 @@
     <script src="../../models/datamodel.js"></script>
     <script src="../../pages/navigation/navigation-viewmodel.js"></script>
     <script src="../../pages/products/products-viewmodel.js"></script>
-    <!--<script src="../../pages/product/detailproduct-viewmodel.js"></script>-->
-    <script>
-        var shouter = new ko.subscribable(); // defined globally 'post-box' to pas messages between different view models
-        var mvm = new MainViewModel();
+    <script src="../../app.js"></script>
 
-        ko.applyBindings(mvm);
-    </script>
 </body>
 
 </html>
