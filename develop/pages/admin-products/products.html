@@ -27,8 +27,8 @@
             <div class="col-md-3 col-lg-2">
                 <nav class="AppNavigation">
                     <ul class="list-group">
-                        <li class="list-group-item"><a href="KO-categories.html">Categories</a></li>
-                        <li class="list-group-item"><a href="KO-products.html">Products</a></li>
+                        <li class="list-group-item"><a href="../categories/categories.html">Categories</a></li>
+                        <li class="list-group-item"><a href="products.html">Products</a></li>
                     </ul>
                 </nav>
             </div>
@@ -57,45 +57,45 @@
                                 <td data-bind="text: $data.promoted">Promoted</td>
                                 <td data-bind="text: $data.amount">Amount</td>
                                 <td data-bind="text: $data.category">Category</td>
-                                <td data-bind="click: $root.products.getProduct.bind($data)"><a
-                                        href="../product/product.html" class="btn">Edit</a></td>
+                                <td data-bind="click: $root.products.hideProductsGrid"><a
+                                        href="../product/product.html" class="btn" data-bind="click:$root.products.getProduct.bind($data)">Edit</a></td>
                             </tr>
                             </tbody>
                         </table>
                     </div>
 
-                    <div class="AdminForm">
-                        <form>
+                    <div class="AdminForm" data-bind="foreach: products.productsList()">
+                        <form data-bind="visible: $data.title == $root.products.chosenProduct()">
                             <fieldset class="form-group">
                                 <label>Title</label>
-                                <input type="text" placeholder="Title" class="form-control"/>
+                                <input type="text" placeholder="Title" class="form-control" data-bind="value: $data.title"/>
                             </fieldset>
                             <fieldset class="form-group">
                                 <label>Category</label>
-                                <select placeholder="Choose category" class="form-control">
-                                    <option>Category 1</option>
-                                    <option>Category 2</option>
+                                <select placeholder="Choose category" class="form-control" data-bind="foreach: $root.nav.categoriesList">
+                                    <option data-bind="text: $data.title">Category 1</option>
+                                    <!--<option>Category 2</option>-->
                                 </select>
                             </fieldset>
                             <fieldset class="form-group">
                                 <label>Description</label>
-                                <textarea placeholder="Product description" class="form-control"></textarea>
+                                <textarea placeholder="Product description" class="form-control" data-bind="value: $data.description"></textarea>
                             </fieldset>
                             <fieldset class="form-group">
                                 <label>Image URL</label>
-                                <input type="text" placeholder="Image URL" class="form-control"/>
+                                <input type="text" placeholder="Image URL" class="form-control" data-bind="value: $data.imageUrl"/>
                             </fieldset>
                             <fieldset class="form-group">
                                 <label>Price</label>
-                                <input type="text" placeholder="0.00" class="form-control"/>
+                                <input type="text" placeholder="0.00" class="form-control" data-bind="value: $data.price"/>
                             </fieldset>
                             <fieldset class="form-group">
                                 <label>Amount</label>
-                                <input type="number" placeholder="0" class="form-control"/>
+                                <input type="number" placeholder="0" class="form-control" data-bind="value: $data.amount" />
                             </fieldset>
                             <fieldset class="form-group">
                                 <label>
-                                    <input type="checkbox"/><span>Is promoted</span>
+                                    <input type="checkbox" data-bind="checked: $data.promoted"/><span>Is promoted</span>
                                 </label>
                             </fieldset>
                             <div class="AdminForm-buttons"><a href="admin-products.html" class="btn btn-primary">Save</a>
