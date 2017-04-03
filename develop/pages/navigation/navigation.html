@@ -1,1 +1,15 @@
-﻿
+﻿<div class="AppNavigation" data-bind="visible: DataModel.isCategoriesReady()">
+    <h6 class="list-group-item">Categories</h6>
+    <ul class="list-group" data-bind="foreach: nav.categoriesList, click: products.productByCategory">
+        <li class="list-group-item" data-bind="click: $root.nav.getCategory.bind($data.title)">
+            <a href="" data-bind="text: $data.title"></a>
+        </li>
+    </ul>
+</div>
+<!--Mr. spinner-->
+<div class="spinner-wraper" data-bind="visible: !DataModel.isCategoriesReady()">
+    <div class="spinner">
+        <div class="dot1"></div>
+        <div class="dot2"></div>
+    </div>
+</div>

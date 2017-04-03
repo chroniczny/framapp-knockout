@@ -27,14 +27,14 @@
             <div class="col-md-3 col-lg-2">
                 <nav class="AppNavigation">
                     <ul class="list-group">
-                        <li class="list-group-item"><a href="../categories/categories.html">Categories</a></li>
-                        <li class="list-group-item"><a href="products.html">Products</a></li>
+                        <li class="list-group-item"><a href="../admin-categories/admin-categories.html" data-bind="click: products.toCategoryGrid">Categories</a></li>
+                        <li class="list-group-item"><a href="admin-products.html" data-bind="click: products.toProductGrid">Products</a></li>
                     </ul>
                 </nav>
             </div>
             <div class="col-md-9 col-lg-10">
                 <main class="AppMain">
-                    <div class="AdminTable table-responsive">
+                    <div class="AdminTable table-responsive" data-bind="visible: products.adminTable()">
                         <table class="table">
                             <thead>
                             <tr>
@@ -64,7 +64,7 @@
                         </table>
                     </div>
 
-                    <div class="AdminForm" data-bind="foreach: products.productsList()">
+                    <div class="AdminForm" data-bind="foreach: products.productsList(), visible: products.adminForm()">
                         <form data-bind="visible: $data.title == $root.products.chosenProduct()">
                             <fieldset class="form-group">
                                 <label>Title</label>

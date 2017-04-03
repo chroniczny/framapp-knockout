@@ -7,7 +7,7 @@ var NavViewModel = function () {
     var dm = new DataModel($.getJSON, $.map);
     dm.categories(self.categoriesJson, self.categoriesList);
 
-    self.ourCategory = ko.observable(); // message variable which want to pass to another view model (products)
+    self.ourCategory = ko.observable(); // message variable which want to pass to another view model (admin-product)
 
     self.ourCategory.subscribe(function(newValue){  // send observable variable to
         shouter.notifySubscribers(newValue, 'clickedCategory'); // the 'topic' named shouter post-box

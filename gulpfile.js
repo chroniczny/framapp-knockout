@@ -79,6 +79,32 @@ gulp.task('serve', ['html'], function () { // uruchamia browerSync (zwykle start
         }
     });
 
+    // browserSync.init({
+    //     open: true,
+    //     port: 8080,
+    //     server: {
+    //         baseDir: [  // katalogi, w ktorych serwer szuka zaciaganych plikow (js, css itd.)
+    //             DIR_SOURCE + '/pages/admin-categories/',
+    //             DIR_DIST,
+    //             DIR_SOURCE
+    //         ],
+    //         index: 'admin-categories.html'
+    //     }
+    // });
+
+    // browserSync.init({
+    //     open: true,
+    //     port: 8080,
+    //     server: {
+    //         baseDir: [  // katalogi, w ktorych serwer szuka zaciaganych plikow (js, css itd.)
+    //             DIR_SOURCE + '/pages/admin-products/',
+    //             DIR_DIST,
+    //             DIR_SOURCE
+    //         ],
+    //         index: 'admin-products.html'
+    //     }
+    // });
+
     // nasluchuje zmiany w nastepujacych lokalizacjach i odzwierciedla w przegladarce
     gulp.watch(DIR_SOURCE + '/**/*.js', ['js-watch']);   // w js-watch jest reload() ?
     gulp.watch(DIR_SOURCE + '/**/*.scss', ['sass']);     // w sass jest stream() ?

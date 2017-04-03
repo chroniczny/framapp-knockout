@@ -27,14 +27,14 @@
             <div class="col-md-3 col-lg-2">
                 <nav class="AppNavigation">
                     <ul class="list-group">
-                        <li class="list-group-item"><a href="categories.html">Categories</a></li>
-                        <li class="list-group-item"><a href="products.html">Products</a></li>
+                        <li class="list-group-item"><a href="admin-categories.html" data-bind="click: products.toCategoryGrid">Categories</a></li>
+                        <li class="list-group-item"><a href="../admin-products/admin-products.html" data-bind="click: products.toProductGrid">Products</a></li>
                     </ul>
                 </nav>
             </div>
             <div class="col-md-9 col-lg-10">
                 <main class="AppMain">
-                    <div class="AdminTable table-responsive" >
+                    <div class="AdminTable table-responsive" data-bind="visible: products.adminTable()">
 
                         <table class="table" >
                             <thead>
@@ -47,13 +47,13 @@
                             <td data-bind="text: $data.id">category-1</td>
                             <td data-bind="text: $data.title">category-2</td>
                             <td data-bind="click: $root.products.setCategoryGrid"><a
-                                    href="../../pages/category/category.html" class="btn" data-bind="click: $root.nav.getCategory.bind($data.title)">Edit</a></td>
+                                    href="" class="btn" data-bind="click: $root.nav.getCategory.bind($data.title)">Edit</a></td>
                             <!--</tr>-->
                             </tbody>
                         </table>
                     </div>
-                    <div class="AdminForm" data-bind="foreach: nav.categoriesList()">
-                        <form data-bind="visible: $data.title.toLowerCase() == $root.nav.ourCategory()">
+                    <div class="AdminForm" data-bind="foreach: nav.categoriesList(), visible: products.adminForm()">
+                        <form data-bind="visible: $data.title.toLowerCase() == $root.products.chosenCategory()">
                             <fieldset class="form-group">
                                 <label>Category title</label>
                                 <input type="text" placeholder="Title" class="form-control" data-bind="value: $data.title"/>
@@ -63,7 +63,7 @@
                                 <textarea placeholder="Category description" class="form-control"
                                           data-bind="value: $data.description"></textarea>
                             </fieldset>
-                            <div class="AdminForm-buttons"><a href="admin-products.html" class="btn btn-primary">Save</a>
+                            <div class="AdminForm-buttons"><a href="#admin-products.html" class="btn btn-primary">Save</a>
                             </div>
                         </form>
                     </div>

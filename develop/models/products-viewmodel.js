@@ -23,21 +23,68 @@ var ProductsViewModel = function () {
     /* -- SHOW DETAILS OF CHOSEN PRODUCT -- */
     self.chosenProduct = ko.observable();
     self.getProduct = function () {
-        location.hash = this.category +'/'+this.title; //
+        location.hash = this.category + '/' + this.title; //
+        // console.log('product is: ' + this.title);
     };
 
-    Sammy(function(){
-        this.get('#:home-promoted', function(){
-            self.categorizedProducts.removeAll(); // clear collection of product by category
-            self.chosenProduct(null); // hide chosen product view
-            self.isPromoVisible(true); // show promoted products from all categories
+    self.adminForm = ko.observable(false);
+    self.adminTable = ko.observable(true);
+
+    /* ADMIN BEHAVIOUR */
+    self.setCategoryGrid = function () {
+        location.hash = 'admin-categories/' + self.chosenCategory();
+    };
+
+    self.hideProductsGrid = function () {
+        location.hash = 'admin-products/' + self.chosenProduct();
+    };
+
+    self.toCategoryGrid = function () {
+        location.hash = 'admin-categories';
+    };
+
+    self.toProductGrid = function () {
+        location.hash = 'admin-products';
+    };
+
+    Sammy(function () {
+
+        this.get('#admin-categories', function () {
+            console.log('whats in url?');
+            self.adminForm(false);
+            self.adminTable(true);
         });
 
-        this.get('#:category', function(){
+        this.get('#admin-products', function () {
+            self.adminForm(false);
+            self.adminTable(true);
+        });
+
+        this.get('#admin-categories/:title', function () {
+            console.log(this.params.title);
+            self.chosenCategory(this.params.title);
+            self.adminForm(true);
+            self.adminTable(false);
+        });
+
+        this.get('#admin-products/:title', function () {
+            console.log(this.params.title);
+            self.chosenProduct(this.params.title);
+            self.adminForm(true);
+            self.adminTable(false);
+        });
+
+        this.get('#home-promoted', function () {
+            self.categorizedProducts.removeAll(); // clear collection of product by category
+            self.chosenProduct(null); // hide chosen product view
+            self.isPromoVisible(true); // show promoted admin-product from all admin-category
+        });
+
+        this.get('#:category', function () {
             self.categorizedProducts.removeAll(); // clean observable array from other
 
             for (var i = 0; i < self.productsList().length; i++) {  // make collection of product from chosen category
-                if (self.productsList()[i].category === this.params.category) {
+                if (self.productsList()[i].category === this.params.category) { // params.category!!!
                     self.categorizedProducts.push(self.productsList()[i]);
                 }
             }
@@ -47,17 +94,19 @@ var ProductsViewModel = function () {
             return self.categorizedProducts;
         });
 
-        this.get('#:category/:title', function(){
+        this.get('#:category/:title', function () {
             self.chosenProduct(this.params.title); // shows card with chosen product title
             self.isPromoVisible(false); // make home-promoted view invisible
             self.categorizedProducts.removeAll(); // removes categorized ProductCards from UI, Details of product stays in UI
         });
 
-        this.get('', function() {
+
+
+        this.get('', function () {
+
             this.app.runRoute('get', '#home-promoted');
             var injectedURL = '#home-promoted';
             window.history.pushState({page: 'default'}, injectedURL, injectedURL);
         });
-
     }).run();
 };
