@@ -66,31 +66,31 @@ gulp.task('sass', function () {
 });
 
 gulp.task('serve', ['html'], function () { // uruchamia browerSync (zwykle startujemy od tego taska: gulp serve)
-    browserSync.init({
-        open: true,
-        port: 8080,
-        server: {
-            baseDir: [  // katalogi, w ktorych serwer szuka zaciaganych plikow (js, css itd.)
-                DIR_SOURCE + '/pages/home/',
-                DIR_DIST,
-                DIR_SOURCE
-            ],
-            index: 'index.html'
-        }
-    });
-
     // browserSync.init({
     //     open: true,
     //     port: 8080,
     //     server: {
     //         baseDir: [  // katalogi, w ktorych serwer szuka zaciaganych plikow (js, css itd.)
-    //             DIR_SOURCE + '/pages/admin-categories/',
+    //             DIR_SOURCE + '/pages/home/',
     //             DIR_DIST,
     //             DIR_SOURCE
     //         ],
-    //         index: 'admin-categories.html'
+    //         index: 'index.html'
     //     }
     // });
+
+    browserSync.init({
+        open: true,
+        port: 8080,
+        server: {
+            baseDir: [  // katalogi, w ktorych serwer szuka zaciaganych plikow (js, css itd.)
+                DIR_SOURCE + '/pages/admin-categories/',
+                DIR_DIST,
+                DIR_SOURCE
+            ],
+            index: 'admin-categories.html'
+        }
+    });
 
     // browserSync.init({
     //     open: true,

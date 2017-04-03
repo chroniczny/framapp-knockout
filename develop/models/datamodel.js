@@ -10,24 +10,60 @@ var DataModel = function (getJSON, map) {   // used dependency injection DataMod
                 categoriesArray.push(elem);
                 DataModel.isCategoriesReady(true);
             });
+
             // console.log(ourArray());
-        });
+        })
+            .done(function () {
+                console.log("first 'category' success");
+            })
+            .fail(function (jqxhr, textStatus, error) {
+                console.log("Request Failed: " + error);
+            });
     };
 
-    var items = function (jsonFileUrl, categoriesArray) {
+    var items = function (jsonFileUrl, itemsArray) {
         getJSON(jsonFileUrl, function (json) {
             var firstJSON = json.products;
             map(firstJSON, function (elem) {
-                categoriesArray.push(elem);
+                itemsArray.push(elem);
                 DataModel.isProductReady(true);
             });
             // console.log(ourArray());
-        });
+        })
+            .done(function () {
+                console.log("second 'products' success");
+            })
+            .fail(function (jqxhr, textStatus, error) {
+                console.log("Request Failed: " + error);
+            });
+
     };
+
+
+
+
+    // self.UpdateCountry = function (model, event) {
+    //     $.ajax({
+    //         url: "api/Country/" + model.id(),
+    //         type: "PUT",
+    //         dataType: "json",
+    //         contentType: "application/json",
+    //         data: ko.toJSON(model),
+    //         success: function (data) {
+    //             model.isEdit(false);
+    //         },
+    //         error: function (err) {
+    //             alert('Error');
+    //         }
+    //     });
+    // };
+
+
 
     return {
         categories: categories,
-        items: items
+        items: items,
+        // updateCategory: updateCategory
     }
 };
 

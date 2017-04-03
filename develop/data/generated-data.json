@@ -1,13 +1,19 @@
 {
   "categories": {
     "phones": {
-      "title": "Phones"
+      "title": "Phones",
+      "id": "01",
+      "description": "pppppppp"
     },
     "notebooks": {
-      "title": "Notebooks"
+      "title": "Notebooks",
+      "id": "02",
+      "description": "nnnnnnnnn"
     },
     "televisions": {
-      "title": "Televisions"
+      "title": "Televisions",
+      "id": "03",
+      "description": "ttttttttttt"
     }
   },
   "products": [
