@@ -3,18 +3,20 @@
 var DataModel = function (getJSON, map) {   // used dependency injection DataModel($.getJSON, $.map)
 
 
-    var categories = function (jsonFileUrl, categoriesArray) {
+    var categories = function (jsonFileUrl, categoriesArray, categoriesNames) {
         getJSON(jsonFileUrl, function (json) {
             var firstJSON = json.categories;
+            categoriesNames.push(Object.keys(firstJSON));
             map(firstJSON, function (elem) {
                 categoriesArray.push(elem);
+
                 DataModel.isCategoriesReady(true);
             });
 
             // console.log(ourArray());
         })
             .done(function () {
-                console.log("first 'category' success");
+                // console.log("first 'category' success");
             })
             .fail(function (jqxhr, textStatus, error) {
                 console.log("Request Failed: " + error);
@@ -31,7 +33,7 @@ var DataModel = function (getJSON, map) {   // used dependency injection DataMod
             // console.log(ourArray());
         })
             .done(function () {
-                console.log("second 'products' success");
+                // console.log("second 'products' success");
             })
             .fail(function (jqxhr, textStatus, error) {
                 console.log("Request Failed: " + error);
@@ -62,7 +64,7 @@ var DataModel = function (getJSON, map) {   // used dependency injection DataMod
 
     return {
         categories: categories,
-        items: items,
+        items: items
         // updateCategory: updateCategory
     }
 };

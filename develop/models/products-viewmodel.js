@@ -16,6 +16,11 @@ var ProductsViewModel = function () {
         self.chosenCategory(newValue); // passing message into value observable here...
     }, self, "clickedCategory"); // using 'topic' named when defining message to passing - in other viewModel -> nav
 
+
+
+
+
+
     self.productByCategory = function () { //
         location.hash = self.chosenCategory(); // PASTE
     };
@@ -50,7 +55,7 @@ var ProductsViewModel = function () {
     Sammy(function () {
 
         this.get('#admin-categories', function () {
-            console.log('whats in url?');
+            // console.log('whats in url?');
             self.adminForm(false);
             self.adminTable(true);
         });
@@ -61,7 +66,7 @@ var ProductsViewModel = function () {
         });
 
         this.get('#admin-categories/:title', function () {
-            console.log(this.params.title);
+            // console.log(this.params.title);
             self.chosenCategory(this.params.title);
             self.adminForm(true);
             self.adminTable(false);
@@ -103,7 +108,6 @@ var ProductsViewModel = function () {
 
 
         this.get('', function () {
-
             this.app.runRoute('get', '#home-promoted');
             var injectedURL = '#home-promoted';
             window.history.pushState({page: 'default'}, injectedURL, injectedURL);

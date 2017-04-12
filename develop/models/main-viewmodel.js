@@ -11,15 +11,25 @@ var MainViewModel = function () {
         location.hash = 'home-promoted';
     };
 
+    // self.chosenCategoryId = ko.observable();
+
+
     self.updateCategory = function(model) {
+        var idOfChoosen = self.nav.ourCategoryId(),
+            changedCategoryTitle = self.products.chosenCategory();
+            // changedCategoryByKey =
+
+
+
+
         $.ajax({
-            url: 'https://frammapp-knockout.firebaseio.com/categories/'+self.products.chosenCategory()+'.json',
+            url: 'https://frammapp-knockout.firebaseio.com/categories/'+changedCategoryTitle+'.json',
             type: "PUT",
             dataType: "json",
             contentType: "application/json",
             data: ko.toJSON(model),
             success: function (data) {
-                console.log('succes in editing Category');
+                console.log('succes in editing Category id: '+idOfChoosen+', category title: '+changedCategoryTitle);
                 // model.isEdit(false);
             },
             error: function (err) {
